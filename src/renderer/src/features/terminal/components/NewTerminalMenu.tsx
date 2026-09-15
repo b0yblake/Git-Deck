@@ -53,7 +53,7 @@ export const NewTerminalMenu = ({
         onClick={onCreate}
       >
         <span aria-hidden="true">＋</span>
-        New Terminal
+        NEW TERMINAL
       </button>
 
       <button

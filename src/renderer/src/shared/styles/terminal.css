@@ -174,19 +174,9 @@
 }
 
 .terminal-session-item {
-  position: relative;
   display: flex;
   min-width: 0;
   border-radius: var(--radius);
-}
-
-.terminal-session-item::before {
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 2px;
-  border-radius: 2px;
-  background: transparent;
-  content: '';
 }
 
 .terminal-session-item:hover,
@@ -196,10 +186,6 @@
 
 .terminal-session-item--active {
   background: var(--surface-selected);
-}
-
-.terminal-session-item--active::before {
-  background: var(--accent);
 }
 
 .terminal-session-item__open {
