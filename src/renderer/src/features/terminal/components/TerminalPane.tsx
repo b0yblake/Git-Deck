@@ -19,6 +19,16 @@ export interface TerminalPaneProps {
   readonly onClose: () => void
 }
 
+/**
+ * The last four segments of a path, keeping its own separator — the header
+ * has no room for a full path, and the tail is what tells terminals apart.
+ * The full path stays on the tooltip.
+ */
+export const trailingPath = (cwd: string): string => {
+  const separator = cwd.includes('\\') ? '\\' : '/'
+  return cwd.split(/[\\/]/).filter(Boolean).slice(-4).join(separator)
+}
+
 export const TerminalPane = ({
   session,
   paneNumber,
@@ -51,7 +61,7 @@ export const TerminalPane = ({
         </strong>
         <span>{shellLabel}</span>
         <span className="terminal-pane__cwd" title={session.definition.cwd}>
-          {session.definition.cwd}
+          {trailingPath(session.definition.cwd)}
         </span>
       </div>
       <div className="terminal-pane__actions">

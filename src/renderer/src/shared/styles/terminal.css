@@ -536,11 +536,15 @@
   background: var(--surface-raised);
 }
 
+/* Shrinks before the actions do and clips what still does not fit, so the
+   buttons never end up under the title on a narrow pane. */
 .terminal-pane__identity {
   display: flex;
+  flex: 1 1 auto;
   min-width: 0;
   align-items: center;
   gap: var(--space-2);
+  overflow: hidden;
 }
 
 .terminal-pane__identity strong {
@@ -558,7 +562,9 @@
   white-space: nowrap;
 }
 
-.terminal-pane__identity > .terminal-pane__cwd {
+/* `span` so this outweighs the `:not()` rule above; without it the path
+   never shrank, and spilled under the action buttons instead. */
+.terminal-pane__identity > span.terminal-pane__cwd {
   flex: 0 1 auto;
 }
 
@@ -570,9 +576,12 @@
 }
 
 .terminal-pane__actions {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex: none;
   align-items: center;
+  background: var(--surface-raised);
 }
 
 .terminal-pane__actions button {
