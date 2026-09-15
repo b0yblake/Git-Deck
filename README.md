@@ -311,8 +311,10 @@ Architecture decisions, test contracts, and implementation history live in
 - Report vulnerabilities privately through
   [GitHub Security Advisories](https://github.com/b0yblake/Git-Deck/security/advisories/new).
 - Support is best-effort; there is no support SLA or production warranty.
-- The repository is currently **UNLICENSED**. Public source visibility does not
-  grant permission to redistribute or sublicense the project.
+- GitDeck is licensed under the [MIT License](https://opensource.org/license/mit).
+  You may use, modify, and distribute the project, including commercially, as
+  long as the copyright and license notices are preserved. The software is
+  provided without warranty.
 
 <div align="center">
 
