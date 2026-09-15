@@ -91,7 +91,7 @@ describe('release — no URL ever crosses this channel', () => {
     await vi.waitFor(() => expect(opened).toHaveLength(1))
 
     expect(result.ok).toBe(true)
-    expect(opened).toEqual(['https://github.com/b0yblake/Git-SCM-management/releases/tag/v0.2.0'])
+    expect(opened).toEqual(['https://github.com/b0yblake/Git-Deck/releases/tag/v0.2.0'])
   })
 
   it('rejects a payload, even one carrying a URL', async () => {

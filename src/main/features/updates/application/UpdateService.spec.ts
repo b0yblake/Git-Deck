@@ -82,7 +82,7 @@ describe('comparison outcomes', () => {
       currentVersion: '0.1.0',
       latest: {
         version: '0.2.0',
-        releaseUrl: 'https://github.com/b0yblake/Git-SCM-management/releases/tag/v0.2.0',
+        releaseUrl: 'https://github.com/b0yblake/Git-Deck/releases/tag/v0.2.0',
         publishedAt: 42
       }
     })
@@ -170,7 +170,7 @@ describe('getLatest — the only URL openRelease may open', () => {
     await instance.checkNow()
 
     expect(instance.getLatest()?.releaseUrl).toBe(
-      'https://github.com/b0yblake/Git-SCM-management/releases/tag/v0.2.0'
+      'https://github.com/b0yblake/Git-Deck/releases/tag/v0.2.0'
     )
   })
 })

@@ -49,7 +49,7 @@ describe('isNewerVersion', () => {
 describe('releaseUrlFor', () => {
   it('mints the one URL the app may open, from a validated version', () => {
     expect(releaseUrlFor('0.2.0')).toBe(
-      'https://github.com/b0yblake/Git-SCM-management/releases/tag/v0.2.0'
+      'https://github.com/b0yblake/Git-Deck/releases/tag/v0.2.0'
     )
   })
 })

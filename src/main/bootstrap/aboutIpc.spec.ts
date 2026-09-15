@@ -49,7 +49,7 @@ describe('opening a project link', () => {
 
   it('opens https URLs on the project repository, and nothing else', () => {
     for (const url of Object.values(APP_LINKS).map((link) => link.url)) {
-      expect(url.startsWith('https://github.com/b0yblake/Git-SCM-management')).toBe(true)
+      expect(url.startsWith('https://github.com/b0yblake/Git-Deck')).toBe(true)
     }
   })
 })

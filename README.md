@@ -11,13 +11,14 @@ without stopping it, then save the whole setup as a workspace you can reopen
 in one click.
 
 <!-- Keep the release tag, app version, asset name, and hashes in sync. -->
-<a href="https://github.com/b0yblake/Git-SCM-management/releases/download/v0.5.2/GitDeck-Setup-0.5.2-x64.exe">
+<a href="https://github.com/b0yblake/Git-Deck/releases/download/v0.5.2/GitDeck-Setup-0.5.2-x64.exe">
   <img src="https://img.shields.io/badge/Download-GitDeck%200.5.2%20for%20Windows-1677FF?style=for-the-badge&logo=windows11&logoColor=white" alt="Download GitDeck 0.5.2 for Windows x64" />
 </a>
 
 <br />
 
-[Release page](https://github.com/b0yblake/Git-SCM-management/releases/tag/v0.5.2)
+[Website](https://b0yblake.github.io/Git-Deck/)
+· [Release page](https://github.com/b0yblake/Git-Deck/releases/tag/v0.5.2)
 · [Quick start](#quick-start)
 · [Features](#core-features)
 · [Privacy](#privacy-and-safety)
@@ -62,7 +63,7 @@ normally and can, of course, change a repository.
 
 ### Recommended: EXE installer
 
-1. [Download `GitDeck-Setup-0.5.2-x64.exe`](https://github.com/b0yblake/Git-SCM-management/releases/download/v0.5.2/GitDeck-Setup-0.5.2-x64.exe).
+1. [Download `GitDeck-Setup-0.5.2-x64.exe`](https://github.com/b0yblake/Git-Deck/releases/download/v0.5.2/GitDeck-Setup-0.5.2-x64.exe).
 2. Open the downloaded file. Keep the default
    `%LOCALAPPDATA%\Programs\GitDeck` folder or choose another location.
 3. Launch **GitDeck** from the Start menu or desktop shortcut.
@@ -77,7 +78,7 @@ normally and can, of course, change a repository.
 <summary><strong>Managed or silent installation with MSI</strong></summary>
 
 Download
-[`GitDeck-Setup-0.5.2-x64.msi`](https://github.com/b0yblake/Git-SCM-management/releases/download/v0.5.2/GitDeck-Setup-0.5.2-x64.msi),
+[`GitDeck-Setup-0.5.2-x64.msi`](https://github.com/b0yblake/Git-Deck/releases/download/v0.5.2/GitDeck-Setup-0.5.2-x64.msi),
 then run:
 
 ```powershell
@@ -109,7 +110,7 @@ Compare the result with the digest published by GitHub for the v0.5.2 assets:
 | `GitDeck-Setup-0.5.2-x64.msi` | `68d252e47424cddda2fbc7a474f88df75458ed4819a13a4988b5a805794948d6` |
 
 If the values differ, do not run the installer. Delete it and download a new
-copy from the [official release page](https://github.com/b0yblake/Git-SCM-management/releases/tag/v0.5.2).
+copy from the [official release page](https://github.com/b0yblake/Git-Deck/releases/tag/v0.5.2).
 
 </details>
 
@@ -283,8 +284,8 @@ Prompt should already be present on supported Windows versions.
 Source development requires **Git** and **Node.js 22.22.2 or newer**:
 
 ```powershell
-git clone https://github.com/b0yblake/Git-SCM-management.git
-cd Git-SCM-management
+git clone https://github.com/b0yblake/Git-Deck.git
+cd Git-Deck
 npm ci
 npm run dev
 ```
@@ -306,9 +307,9 @@ Architecture decisions, test contracts, and implementation history live in
 ## Support, security, and license
 
 - For bugs and feature requests, use
-  [GitHub Issues](https://github.com/b0yblake/Git-SCM-management/issues).
+  [GitHub Issues](https://github.com/b0yblake/Git-Deck/issues).
 - Report vulnerabilities privately through
-  [GitHub Security Advisories](https://github.com/b0yblake/Git-SCM-management/security/advisories/new).
+  [GitHub Security Advisories](https://github.com/b0yblake/Git-Deck/security/advisories/new).
 - Support is best-effort; there is no support SLA or production warranty.
 - The repository is currently **UNLICENSED**. Public source visibility does not
   grant permission to redistribute or sublicense the project.
@@ -317,7 +318,7 @@ Architecture decisions, test contracts, and implementation history live in
 
 **Spend less time finding terminals. Spend more time using them.**
 
-[Download GitDeck 0.5.2](https://github.com/b0yblake/Git-SCM-management/releases/download/v0.5.2/GitDeck-Setup-0.5.2-x64.exe)
-· [View all releases](https://github.com/b0yblake/Git-SCM-management/releases)
+[Download GitDeck 0.5.2](https://github.com/b0yblake/Git-Deck/releases/download/v0.5.2/GitDeck-Setup-0.5.2-x64.exe)
+· [View all releases](https://github.com/b0yblake/Git-Deck/releases)
 
 </div>

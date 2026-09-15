@@ -7,7 +7,7 @@
  * here. That is the standing rule from ARCHITECTURE.md §6: no channel accepts
  * a URL, so nothing the renderer sends can reach the user's browser.
  */
-const REPOSITORY = 'https://github.com/b0yblake/Git-SCM-management'
+const REPOSITORY = 'https://github.com/b0yblake/Git-Deck'
 
 export const APP_LINKS = {
   repository: { label: 'Source code', url: REPOSITORY },

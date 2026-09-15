@@ -122,7 +122,7 @@ src/main/features/updates/
 ### Network rules — Main enforces every one
 
 1. Exactly one request per check:
-   `GET https://api.github.com/repos/b0yblake/Git-SCM-management/releases/latest`
+   `GET https://api.github.com/repos/b0yblake/Git-Deck/releases/latest`
    with `Accept: application/vnd.github+json`. The URL is a constant; nothing
    from the renderer, settings or the response is interpolated into it.
 2. HTTPS only, 5-second timeout, response bounded at 256KB, redirects
@@ -135,7 +135,7 @@ src/main/features/updates/
 6. Comparison is numeric on the three components — no string compare, no
    ranges, no prerelease semantics.
 7. `releaseUrl` is minted by Main as
-   `https://github.com/b0yblake/Git-SCM-management/releases/tag/v<version>`
+   `https://github.com/b0yblake/Git-Deck/releases/tag/v<version>`
    from the validated version. `shell.openExternal` receives only this minted
    value; there is deliberately no IPC that opens a renderer-supplied URL.
 8. A failed automatic check schedules nothing: no retry loop, no backoff

@@ -8,7 +8,7 @@ import type { UpdateCheckResult, UpdateInfo } from '@shared/contracts/updates'
 export type { UpdateCheckResult, UpdateInfo }
 
 /** The one repository GitDeck ever checks. A constant, never configuration. */
-export const GITHUB_REPO = 'b0yblake/Git-SCM-management'
+export const GITHUB_REPO = 'b0yblake/Git-Deck'
 
 /**
  * What the release client answers with — the few fields the service needs,

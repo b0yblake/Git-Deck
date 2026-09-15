@@ -28,7 +28,7 @@ describe('the colour painted before the renderer exists', () => {
  */
 describe('what may be handed to the browser', () => {
   it('allows the web', () => {
-    expect(mayOpenExternally('https://github.com/b0yblake/Git-SCM-management')).toBe(true)
+    expect(mayOpenExternally('https://github.com/b0yblake/Git-Deck')).toBe(true)
     expect(mayOpenExternally('http://localhost:5173')).toBe(true)
   })
 

@@ -232,7 +232,7 @@ Nothing else is uploaded: not `latest.yml`, not `.blockmap`, not
 *Settings → General → Releases → Immutable releases* (confirm the exact
 label in the UI; the docs page moved while this plan was written). From then
 on every published release gets the `Release attestation (json)` row and
-`gh release verify vX.Y.Z -R b0yblake/Git-SCM-management` succeeds.
+`gh release verify vX.Y.Z -R b0yblake/Git-Deck` succeeds.
 Releases published before the switch stay as they are.
 
 ### Cutting a release (the whole procedure)
@@ -347,7 +347,7 @@ finally honours).
 - [ ] Six rows: checksums, EXE, MSI, Source code (zip), Source code
       (tar.gz), Release attestation (json); a `sha256:` digest beside each
       of the first three, matching the checksums file.
-- [ ] `gh release verify vX.Y.Z -R b0yblake/Git-SCM-management` passes;
+- [ ] `gh release verify vX.Y.Z -R b0yblake/Git-Deck` passes;
       `gh release verify-asset vX.Y.Z GitDeck-Setup-X.Y.Z-x64.exe` passes on
       a fresh download.
 - [ ] A GitDeck of the *previous* version, launched with the check enabled,

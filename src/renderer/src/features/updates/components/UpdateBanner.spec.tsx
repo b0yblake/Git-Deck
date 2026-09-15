@@ -12,7 +12,7 @@ const AVAILABLE: UpdateCheckResult = {
   currentVersion: '0.1.0',
   latest: {
     version: '0.2.0',
-    releaseUrl: 'https://github.com/b0yblake/Git-SCM-management/releases/tag/v0.2.0',
+    releaseUrl: 'https://github.com/b0yblake/Git-Deck/releases/tag/v0.2.0',
     publishedAt: 0
   }
 }

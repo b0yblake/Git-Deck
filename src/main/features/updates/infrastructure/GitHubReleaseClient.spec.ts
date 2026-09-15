@@ -30,7 +30,7 @@ describe('request shape — no test can make it request anything else', () => {
       RequestInit
     ]
     expect(url).toBe(LATEST_RELEASE_URL)
-    expect(url).toBe('https://api.github.com/repos/b0yblake/Git-SCM-management/releases/latest')
+    expect(url).toBe('https://api.github.com/repos/b0yblake/Git-Deck/releases/latest')
     expect(init.headers).toEqual({
       Accept: 'application/vnd.github+json',
       'User-Agent': 'GitDeck'

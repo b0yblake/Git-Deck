@@ -4,7 +4,7 @@
   "description": "A project-aware Windows terminal workspace manager for developers",
   "repository": {
     "type": "git",
-    "url": "https://github.com/b0yblake/Git-SCM-management.git"
+    "url": "https://github.com/b0yblake/Git-Deck.git"
   },
   "type": "module",
   "main": "./out/main/index.js",
