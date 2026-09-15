@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="GitDeck is a free Windows terminal workspace manager for Git Bash, PowerShell, Command Prompt, and WSL. Arrange, park, and reopen terminal sessions."
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="author" content="GitDeck" />
+    <meta name="theme-color" content="#070a0f" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="GitDeck" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="https://b0yblake.github.io/Git-Deck/" />
+    <meta property="og:title" content="GitDeck — Windows Terminal Workspace Manager" />
+    <meta
+      property="og:description"
+      content="Arrange Git Bash, PowerShell, Command Prompt, and WSL side by side. Park sessions without stopping them and reopen complete terminal workspaces."
+    />
+    <meta
+      property="og:image"
+      content="https://b0yblake.github.io/Git-Deck/assets/og-gitdeck.png"
+    />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1730" />
+    <meta property="og:image:height" content="909" />
+    <meta
+      property="og:image:alt"
+      content="GitDeck Windows terminal workspace showing six live terminal sessions"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="GitDeck — Windows Terminal Workspace Manager" />
+    <meta
+      name="twitter:description"
+      content="Arrange, park, and reopen Git Bash, PowerShell, Command Prompt, and WSL sessions in one local-first Windows workspace."
+    />
+    <meta
+      name="twitter:image"
+      content="https://b0yblake.github.io/Git-Deck/assets/og-gitdeck.png"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="GitDeck Windows terminal workspace showing six live terminal sessions"
+    />
+    <link rel="canonical" href="https://b0yblake.github.io/Git-Deck/" />
+    <link rel="alternate" hreflang="en" href="https://b0yblake.github.io/Git-Deck/" />
+    <link rel="alternate" hreflang="x-default" href="https://b0yblake.github.io/Git-Deck/" />
+    <link rel="icon" type="image/png" href="./assets/gitdeck-icon.png" />
+    <link rel="apple-touch-icon" href="./assets/gitdeck-icon.png" />
+    <link rel="manifest" href="./site.webmanifest" />
+    <link rel="preload" as="image" href="./assets/gitdeck-mosaic.png" fetchpriority="high" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>GitDeck — Windows Terminal Workspace Manager</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://b0yblake.github.io/Git-Deck/#website",
+            "url": "https://b0yblake.github.io/Git-Deck/",
+            "name": "GitDeck",
+            "description": "A free, local-first Windows terminal workspace manager.",
+            "inLanguage": "en"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://b0yblake.github.io/Git-Deck/#software",
+            "name": "GitDeck",
+            "alternateName": "GitDeck Terminal Workspace Manager",
+            "url": "https://b0yblake.github.io/Git-Deck/",
+            "description": "GitDeck organizes Git Bash, PowerShell, Command Prompt, and WSL terminal sessions in reusable visual workspaces on Windows.",
+            "applicationCategory": "DeveloperApplication",
+            "applicationSubCategory": "Terminal workspace manager",
+            "operatingSystem": "Windows 10, Windows 11",
+            "softwareVersion": "0.5.2",
+            "isAccessibleForFree": true,
+            "downloadUrl": "https://github.com/b0yblake/Git-Deck/releases/download/v0.5.2/GitDeck-Setup-0.5.2-x64.exe",
+            "installUrl": "https://github.com/b0yblake/Git-Deck/releases/tag/v0.5.2",
+            "screenshot": "https://b0yblake.github.io/Git-Deck/assets/gitdeck-mosaic.png",
+            "image": "https://b0yblake.github.io/Git-Deck/assets/gitdeck-icon.png",
+            "license": "https://opensource.org/license/mit",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "featureList": [
+              "Multiple live terminal layouts",
+              "Park terminal sessions without stopping processes",
+              "Reusable terminal workspaces",
+              "Session search and keyboard navigation",
+              "Read-only Git status",
+              "Local port inspection"
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://b0yblake.github.io/Git-Deck/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Does parking a terminal stop its process?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Parking only removes the pane from the canvas. Its process, output, and scrollback remain available from the Navigator."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Will processes continue after GitDeck exits?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. GitDeck shuts down the processes it owns. A workspace can recreate terminal definitions later, but it does not preserve process memory or output."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can GitDeck change my Git repository?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The built-in Git integration only reads status information. Commands typed directly into a shell remain unrestricted."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why is a shell missing?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "GitDeck only lists shells detected in standard Windows locations. Install the shell, restart GitDeck, and check New Terminal again."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-header>
+      <div class="nav-wrap">
+        <a class="brand" href="#top" aria-label="GitDeck home">
+          <span class="brand-mark" aria-hidden="true">
+            <img src="./assets/gitdeck-icon.png" alt="" width="512" height="496" />
+          </span>
+          <span>GitDeck</span>
+        </a>
+
+        <nav class="desktop-nav" aria-label="Primary navigation">
+          <a href="#features">Features</a>
+          <a href="#workflow">Workflow</a>
+          <a href="#privacy">Privacy</a>
+          <a href="#install">Install</a>
+        </nav>
+
+        <div class="nav-actions">
+          <a
+            class="github-link"
+            href="https://github.com/b0yblake/Git-Deck"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub <span aria-hidden="true">↗</span>
+          </a>
+          <a
+            class="button button-small"
+            href="https://github.com/b0yblake/Git-Deck/releases/download/v0.5.2/GitDeck-Setup-0.5.2-x64.exe"
+          >
+            Download
+          </a>
+          <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false"
+            aria-controls="mobile-nav"
+            data-menu-toggle
+          >
+            <span></span><span></span>
+          </button>
+        </div>
+      </div>
+
+      <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" data-mobile-nav>
+        <a href="#features">Features</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#install">Install</a>
+        <a href="https://github.com/b0yblake/Git-Deck">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="hero-copy reveal">
+          <div class="hero-app-icon" aria-hidden="true">
+            <img src="./assets/gitdeck-icon.png" alt="" width="512" height="496" />
+          </div>
+          <p class="eyebrow"><span class="status-dot"></span> Windows terminal workspace manager</p>
+          <h1>Windows terminals.<br /><span>One workspace.</span></h1>
+          <p class="hero-lede">
+            GitDeck runs Git Bash, PowerShell, Command Prompt, and WSL side by
+            side. Park a session without stopping it, then reopen the whole setup
+            in one click.
+          </p>
+          <div class="hero-actions">
+            <a
+              class="button button-primary"
+              href="https://github.com/b0yblake/Git-Deck/releases/download/v0.5.2/GitDeck-Setup-0.5.2-x64.exe"
+            >
+              <span class="windows-glyph" aria-hidden="true">⊞</span>
+              Download for Windows
+            </a>
+            <a class="button button-ghost" href="#product-tour">
+              See it in action <span aria-hidden="true">↓</span>
+            </a>
+          </div>
+          <div class="trust-row" aria-label="Product highlights">
+            <span>v0.5.2 · Windows 10/11 x64</span>
+            <span>No account</span>
+            <span>No telemetry</span>
+            <span>Free &amp; open source</span>
+          </div>
+        </div>
+
+        <div class="product-stage reveal" data-delay="1">
+          <div class="window-bar" aria-hidden="true">
+            <span class="app-chip"><img src="./assets/gitdeck-icon.png" alt="" width="512" height="496" /> GitDeck</span>
+            <span class="window-title">Demo Workspace</span>
+            <span class="window-controls"><i>—</i><i>□</i><i>×</i></span>
+          </div>
+          <img
+            src="./assets/gitdeck-mosaic.png"
+            alt="GitDeck showing six active terminal sessions in a balanced grid"
+            width="1672"
+            height="680"
+            decoding="async"
+            fetchpriority="high"
+          />
+        </div>
+
+        <p class="hero-caption reveal" data-delay="2">
+          Six live sessions. Zero tab hunting.
+        </p>
+      </section>
+
+      <section class="section" id="features">
+        <div class="section-heading reveal">
+          <p class="section-index">01 <span>Features</span></p>
+          <div>
+            <h2>Your project, arranged<br />the way you think.</h2>
+            <p>
+              GitDeck turns a pile of terminal tabs into a visual workspace where
+              every process has a place—and stays within reach.
+            </p>
+          </div>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card feature-wide reveal">
+            <div class="card-copy">
+              <span class="card-number">01</span>
+              <h3>Terminal Mosaic</h3>
+              <p>
+                Switch between Focus, Columns, Main + Side, and an elastic Grid.
+                Layouts rebalance without restarting a single shell.
+              </p>
+            </div>
+            <div class="layout-demo" aria-hidden="true">
+              <div class="layout-tabs">
+                <span>Focus</span><span>Columns</span><span>Main + Side</span><span class="active">Grid</span>
+              </div>
+              <div class="mini-grid">
+                <div><b><i class="dot green"></i>web-portal</b><code>$ npm run dev</code></div>
+                <div><b><i class="dot blue"></i>api-server</b><code>✓ listening :4000</code></div>
+                <div><b><i class="dot purple"></i>database</b><code>✓ 3 containers</code></div>
+                <div><b><i class="dot amber"></i>test-runner</b><code>✓ 26 tests passed</code></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="feature-card reveal" data-delay="1">
+            <div class="card-icon park-icon" aria-hidden="true"><span></span></div>
+            <span class="card-number">02</span>
+            <h3>Park, don’t close</h3>
+            <p>
+              Clear a pane from the canvas while its process, output, and scrollback
+              keep running in the Navigator.
+            </p>
+            <div class="park-demo" aria-hidden="true">
+              <span><i class="dot green"></i>web-portal</span>
+              <span class="is-parked"><i class="dot blue"></i>api-server <b>Parked</b></span>
+              <span><i class="dot amber"></i>worker</span>
+            </div>
+          </article>
+
+          <article class="feature-card reveal" data-delay="2">
+            <div class="card-icon workspace-icon" aria-hidden="true">⌁</div>
+            <span class="card-number">03</span>
+            <h3>Reusable workspaces</h3>
+            <p>
+              Save terminal names, folders, shells, and optional startup commands.
+              Recreate a project setup whenever work resumes.
+            </p>
+            <div class="workspace-demo" aria-hidden="true">
+              <div><span>Web app</span><small>4 terminals</small></div>
+              <button type="button" tabindex="-1">Open workspace <b>↗</b></button>
+            </div>
+          </article>
+
+          <article class="feature-card compact reveal">
+            <span class="card-number">04</span>
+            <h3>Session Navigator</h3>
+            <p>Search every running or parked session by name, shell, or directory.</p>
+            <kbd>Ctrl</kbd><b class="plus">+</b><kbd>Tab</kbd>
+          </article>
+
+          <article class="feature-card compact reveal" data-delay="1">
+            <span class="card-number">05</span>
+            <h3>Read-only Git status</h3>
+            <p>See the active branch and working-tree state without exposing Git write actions.</p>
+            <div class="git-chip"><span>⑂</span> feature/dashboard <b>3</b></div>
+          </article>
+
+          <article class="feature-card compact reveal" data-delay="2">
+            <span class="card-number">06</span>
+            <h3>Safer port control</h3>
+            <p>Inspect local listeners and explicitly confirm a process before terminating it.</p>
+            <div class="port-chip"><span class="status-dot"></span> localhost:<b>4000</b></div>
+          </article>
+        </div>
+
+        <div class="included-strip reveal">
+          <p>Shells detected automatically</p>
+          <div>
+            <span>Windows PowerShell</span><span>PowerShell 7</span><span>Command Prompt</span><span>Git Bash</span><span>WSL</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section tour-section" id="product-tour">
+        <div class="section-heading reveal">
+          <p class="section-index">02 <span>In action</span></p>
+          <div>
+            <h2>The real app.<br />Every pane alive.</h2>
+            <p>
+              One canvas for the frontend, API, database, worker, tests, and the
+              shell you always need at the last minute.
+            </p>
+          </div>
+        </div>
+
+        <figure class="app-showcase reveal">
+          <div class="showcase-topbar">
+            <span><i class="dot green"></i> Demo Workspace</span>
+            <span>Captured in GitDeck</span>
+          </div>
+          <img
+            src="./assets/gitdeck-mosaic.png"
+            alt="GitDeck Terminal Mosaic with web, API, database, worker, test, and utility sessions"
+            loading="lazy"
+            width="1672"
+            height="680"
+            decoding="async"
+          />
+          <figcaption>
+            <div><span>01</span><strong>Everything visible</strong><p>Know what is running without cycling through tabs.</p></div>
+            <div><span>02</span><strong>Every shell native</strong><p>Use the Windows shells already installed on your machine.</p></div>
+            <div><span>03</span><strong>Every setup repeatable</strong><p>Save the blueprint and return to the same structure later.</p></div>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="section workflow-section" id="workflow">
+        <div class="section-heading reveal">
+          <p class="section-index">03 <span>Workflow</span></p>
+          <div>
+            <h2>From empty canvas<br />to ready-to-code.</h2>
+            <p>
+              A useful full-stack workspace takes about a minute to assemble—and
+              one click to reopen next time.
+            </p>
+          </div>
+        </div>
+
+        <ol class="workflow-list">
+          <li class="reveal">
+            <span class="step-number">1</span>
+            <div>
+              <h3>Open the shells you need</h3>
+              <p>Press <kbd>Ctrl</kbd> + <kbd>T</kbd>, or choose any detected shell from New Terminal.</p>
+            </div>
+            <div class="step-visual terminal-command" aria-hidden="true"><code><em>PS</em> C:\dev\web-app&gt; npm run dev<span class="cursor"></span></code></div>
+          </li>
+          <li class="reveal">
+            <span class="step-number">2</span>
+            <div>
+              <h3>Choose the right layout</h3>
+              <p>Focus on one process or keep the entire project in an adaptive grid.</p>
+            </div>
+            <div class="step-visual layout-picker" aria-hidden="true"><i></i><i></i><i></i><i class="chosen"></i></div>
+          </li>
+          <li class="reveal">
+            <span class="step-number">3</span>
+            <div>
+              <h3>Save once. Reopen anytime.</h3>
+              <p>Your names, shells, folders, and startup commands become a reusable blueprint.</p>
+            </div>
+            <div class="step-visual saved-state" aria-hidden="true"><span>✓</span><div><b>Web app</b><small>Workspace saved</small></div></div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="section privacy-section" id="privacy">
+        <div class="privacy-panel reveal">
+          <div class="privacy-intro">
+            <p class="section-index light">04 <span>Privacy &amp; safety</span></p>
+            <h2>Your terminals stay<br />on your machine.</h2>
+            <p>
+              GitDeck is local-first by design. It needs no account, records no
+              terminal input or output, and never installs updates behind your back.
+            </p>
+          </div>
+
+          <div class="privacy-stats" aria-label="Privacy facts">
+            <div><strong>0</strong><span>accounts</span></div>
+            <div><strong>0</strong><span>telemetry</span></div>
+            <div><strong>Local</strong><span>settings &amp; workspaces</span></div>
+            <div><strong>Read-only</strong><span>built-in Git actions</span></div>
+          </div>
+
+          <div class="privacy-details">
+            <div><span>01</span><p><b>No shell logging.</b> Terminal input and output are never written to GitDeck logs.</p></div>
+            <div><span>02</span><p><b>Transparent update checks.</b> At most one metadata request per day, only when enabled.</p></div>
+            <div><span>03</span><p><b>Explicit exits.</b> Closing GitDeck cleanly stops the shell processes it owns.</p></div>
+            <div><span>04</span><p><b>Your data, your folder.</b> Move the data directory at any time from Settings.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section keyboard-section">
+        <div class="section-heading reveal">
+          <p class="section-index">05 <span>Keyboard</span></p>
+          <div>
+            <h2>Stay in flow.<br />Keep the mouse parked.</h2>
+            <p>The actions you repeat all day are always one shortcut away.</p>
+          </div>
+        </div>
+
+        <div class="shortcut-list reveal">
+          <div><span><kbd>Ctrl</kbd><i>+</i><kbd>T</kbd></span><p>Open a new terminal</p></div>
+          <div><span><kbd>Ctrl</kbd><i>+</i><kbd>W</kbd></span><p>Close the focused terminal</p></div>
+          <div><span><kbd>Ctrl</kbd><i>+</i><kbd>Tab</kbd></span><p>Move to the next session</p></div>
+          <div><span><kbd>Ctrl</kbd><i>+</i><kbd>Shift</kbd><i>+</i><kbd>Tab</kbd></span><p>Move to the previous session</p></div>
+        </div>
+      </section>
+
+      <section class="section install-section" id="install">
+        <div class="install-card reveal">
+          <div class="install-copy">
+            <p class="section-index light">06 <span>Install</span></p>
+            <h2>Download.<br />Open. Get to work.</h2>
+            <p>
+              GitDeck runs on Windows 10 and 11 x64. A normal installation needs
+              neither Node.js nor Git.
+            </p>
+            <div class="install-actions">
+              <a
+                class="button button-white"
+                href="https://github.com/b0yblake/Git-Deck/releases/download/v0.5.2/GitDeck-Setup-0.5.2-x64.exe"
+              >
+                <span class="windows-glyph" aria-hidden="true">⊞</span>
+                Download GitDeck 0.5.2
+              </a>
+              <a
+                class="text-link light-link"
+                href="https://github.com/b0yblake/Git-Deck/releases/tag/v0.5.2"
+              >
+                View release notes <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="install-panel">
+            <div class="install-tabs" role="tablist" aria-label="Installation options">
+              <button type="button" role="tab" aria-selected="true" aria-controls="installer-exe" id="tab-exe" data-install-tab="exe">EXE installer</button>
+              <button type="button" role="tab" aria-selected="false" aria-controls="installer-msi" id="tab-msi" data-install-tab="msi">MSI deployment</button>
+            </div>
+            <div class="install-option" id="installer-exe" role="tabpanel" aria-labelledby="tab-exe" data-install-panel="exe">
+              <p class="recommended"><span></span> Recommended</p>
+              <ol>
+                <li><b>Download</b><span>Get the x64 installer from the official release.</span></li>
+                <li><b>Install</b><span>Keep the default per-user folder or choose another.</span></li>
+                <li><b>Launch</b><span>Open GitDeck from Start or the desktop shortcut.</span></li>
+              </ol>
+            </div>
+            <div class="install-option" id="installer-msi" role="tabpanel" aria-labelledby="tab-msi" data-install-panel="msi" hidden>
+              <p>For managed or silent deployments:</p>
+              <div class="copy-row">
+                <code>msiexec /i .\GitDeck-Setup-0.5.2-x64.msi /qn</code>
+                <button type="button" data-copy="msiexec /i .\GitDeck-Setup-0.5.2-x64.msi /qn" aria-label="Copy MSI install command">Copy</button>
+              </div>
+              <a href="https://github.com/b0yblake/Git-Deck/releases/download/v0.5.2/GitDeck-Setup-0.5.2-x64.msi">Download the MSI package <span aria-hidden="true">↓</span></a>
+            </div>
+            <p class="smartscreen-note">
+              <span aria-hidden="true">i</span> GitDeck is not code-signed yet, so SmartScreen may ask for confirmation. Verify the download came from the official release before selecting “Run anyway.”
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section faq-section">
+        <div class="section-heading compact-heading reveal">
+          <p class="section-index">07 <span>Questions</span></p>
+          <div><h2>Good to know.</h2></div>
+        </div>
+        <div class="faq-list reveal">
+          <details>
+            <summary>Does parking a terminal stop its process?<span>+</span></summary>
+            <p>No. Parking only removes the pane from the canvas. Its process, output, and scrollback remain available from the Navigator.</p>
+          </details>
+          <details>
+            <summary>Will processes continue after GitDeck exits?<span>+</span></summary>
+            <p>No. GitDeck shuts down the processes it owns. A workspace can recreate terminal definitions later, but it does not preserve process memory or output.</p>
+          </details>
+          <details>
+            <summary>Can GitDeck change my Git repository?<span>+</span></summary>
+            <p>The built-in Git integration only reads status information. Commands typed directly into a shell remain unrestricted.</p>
+          </details>
+          <details>
+            <summary>Why is a shell missing?<span>+</span></summary>
+            <p>GitDeck only lists shells detected in standard Windows locations. Install the shell, restart GitDeck, and check New Terminal again.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="closing-cta">
+        <div class="closing-glow" aria-hidden="true"></div>
+        <div class="reveal">
+          <div class="hero-app-icon hero-app-icon-small" aria-hidden="true">
+            <img src="./assets/gitdeck-icon.png" alt="" width="512" height="496" />
+          </div>
+          <p class="eyebrow"><span class="status-dot"></span> Free &amp; open source</p>
+          <h2>Spend less time finding terminals.<br /><span>Spend more time using them.</span></h2>
+          <div class="hero-actions">
+            <a
+              class="button button-primary"
+              href="https://github.com/b0yblake/Git-Deck/releases/download/v0.5.2/GitDeck-Setup-0.5.2-x64.exe"
+            >
+              Download for Windows
+            </a>
+            <a class="button button-ghost" href="https://github.com/b0yblake/Git-Deck">Star on GitHub <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-main">
+        <div>
+          <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"><img src="./assets/gitdeck-icon.png" alt="" width="512" height="496" /></span><span>GitDeck</span></a>
+          <p>All your Windows terminals,<br />visible and ready.</p>
+        </div>
+        <div class="footer-links">
+          <div><b>Product</b><a href="#features">Features</a><a href="#privacy">Privacy</a><a href="#install">Install</a></div>
+          <div><b>Resources</b><a href="https://github.com/b0yblake/Git-Deck#quick-start">Quick start</a><a href="https://github.com/b0yblake/Git-Deck/releases">Releases</a><a href="https://github.com/b0yblake/Git-Deck/issues">Issues</a></div>
+          <div><b>Project</b><a href="https://github.com/b0yblake/Git-Deck">GitHub</a><a href="https://github.com/b0yblake/Git-Deck/security/advisories/new">Security</a><a href="https://opensource.org/license/mit">MIT License</a></div>
+        </div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 GitDeck</span><span>v0.5.2 · Windows 10/11 x64</span></div>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

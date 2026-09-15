@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://b0yblake.github.io/Git-Deck/sitemap.xml

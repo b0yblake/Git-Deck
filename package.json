@@ -28,6 +28,7 @@
     "package:dir": "npm run build && electron-builder --dir --x64",
     "package": "npm run build && electron-builder --win --x64 && node scripts/checksums.mjs",
     "test:e2e": "playwright test",
+    "site:check": "node scripts/check-landing.mjs",
     "verify:release": "npm run ci && npm run package && npm run test:e2e"
   },
   "dependencies": {
