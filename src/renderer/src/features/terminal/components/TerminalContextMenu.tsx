@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 
 /**
  * The commands, in order: Phase 10's six, plus "Paste selection" (2026-09-04).
@@ -45,6 +45,21 @@ export const TerminalContextMenu = ({
   onDismiss
 }: TerminalContextMenuProps): React.JSX.Element => {
   const firstRef = useRef<HTMLButtonElement>(null)
+  const menuRef = useRef<HTMLMenuElement>(null)
+  const [position, setPosition] = useState({ left: x, top: y })
+
+  // A right-click near the bottom or right edge would otherwise push the menu
+  // off screen, where the pane's overflow clips it. Measure once it has laid
+  // out and pull it back inside the viewport.
+  useLayoutEffect(() => {
+    const menu = menuRef.current
+    if (!menu) return
+    const { width, height } = menu.getBoundingClientRect()
+    setPosition({
+      left: Math.max(0, Math.min(x, window.innerWidth - width)),
+      top: Math.max(0, Math.min(y, window.innerHeight - height))
+    })
+  }, [x, y])
 
   useEffect(() => {
     firstRef.current?.focus()
@@ -63,9 +78,10 @@ export const TerminalContextMenu = ({
   return (
     <div className="context-menu-backdrop" onMouseDown={onDismiss}>
       <menu
+        ref={menuRef}
         className="context-menu"
         role="menu"
-        style={{ left: x, top: y }}
+        style={position}
         aria-label="Terminal actions"
         onMouseDown={(event) => event.stopPropagation()}
       >

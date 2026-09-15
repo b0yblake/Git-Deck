@@ -129,6 +129,36 @@ describe('dismissing', () => {
   })
 })
 
+describe('placement', () => {
+  it('pulls the menu back inside the viewport near the bottom-right corner', () => {
+    vi.spyOn(HTMLElement.prototype, 'getBoundingClientRect').mockReturnValue({
+      width: 200,
+      height: 300
+    } as DOMRect)
+
+    render(
+      <TerminalContextMenu
+        x={window.innerWidth - 50}
+        y={window.innerHeight - 50}
+        onCommand={onCommand}
+        onDismiss={onDismiss}
+      />
+    )
+
+    const menu = screen.getByRole('menu')
+    expect(menu.style.left).toBe(`${window.innerWidth - 200}px`)
+    expect(menu.style.top).toBe(`${window.innerHeight - 300}px`)
+  })
+
+  it('stays where it was clicked when there is room', () => {
+    show()
+
+    const menu = screen.getByRole('menu')
+    expect(menu.style.left).toBe('40px')
+    expect(menu.style.top).toBe('60px')
+  })
+})
+
 describe('keyboard', () => {
   it('focus lands on the first command when it opens', () => {
     show()
