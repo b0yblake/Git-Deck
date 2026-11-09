@@ -52,7 +52,7 @@ export class PortAccessDeniedError extends AppError {
   readonly code = 'PORT_ACCESS_DENIED'
 
   constructor() {
-    super('Windows denied terminating this process.')
+    super('The operating system denied terminating this process.')
   }
 }
 

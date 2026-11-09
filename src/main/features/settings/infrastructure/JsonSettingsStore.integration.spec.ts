@@ -82,7 +82,7 @@ describe('a file that cannot be trusted', () => {
   })
 
   it('drops an unknown shell profile rather than passing it through', () => {
-    writeFileSync(filePath, JSON.stringify({ defaultShellProfileId: 'fish' }), 'utf8')
+    writeFileSync(filePath, JSON.stringify({ defaultShellProfileId: 'nushell' }), 'utf8')
 
     expect(store().read().defaultShellProfileId).toBeNull()
   })

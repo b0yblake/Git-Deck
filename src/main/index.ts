@@ -49,7 +49,7 @@ if (!app.requestSingleInstanceLock()) {
 
     // Self-healing per launch; packaged only — a dev electron.exe in the
     // Explorer menu would be worse than no entry (Phase 18).
-    if (app.isPackaged) {
+    if (app.isPackaged && process.platform === 'win32') {
       void registerExplorerContextMenu({ exePath: process.execPath, logger: container.logger })
     }
 

@@ -91,7 +91,7 @@ describe('update', () => {
   })
 
   it('rejects an unknown shell profile', () => {
-    expect(update({ defaultShellProfileId: 'fish' })).toEqual({
+    expect(update({ defaultShellProfileId: 'nushell' })).toEqual({
       ok: false,
       error: { code: IPC_ERROR_CODES.invalidRequest, message: expect.any(String) }
     })

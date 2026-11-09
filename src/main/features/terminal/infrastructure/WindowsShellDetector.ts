@@ -9,9 +9,11 @@ export interface DetectShellProfilesOptions {
   readonly probe: PathProbe
   readonly env: Readonly<Record<string, string | undefined>>
   readonly logger: Logger
+  /** Defaults to the Windows shells. */
+  readonly candidates?: readonly Candidate[]
 }
 
-interface Candidate {
+export interface Candidate {
   readonly id: ShellProfileId
   readonly label: string
   readonly args: readonly string[]
@@ -81,11 +83,12 @@ const CANDIDATES: readonly Candidate[] = [
 export const detectShellProfiles = ({
   probe,
   env,
-  logger
+  logger,
+  candidates = CANDIDATES
 }: DetectShellProfilesOptions): ShellProfile[] => {
   const found: ShellProfile[] = []
 
-  for (const candidate of CANDIDATES) {
+  for (const candidate of candidates) {
     let file: string | undefined
     try {
       file = candidate.locations(env).find((path) => probe(path))

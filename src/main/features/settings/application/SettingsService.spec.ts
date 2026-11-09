@@ -71,7 +71,7 @@ describe('normalizeSettings', () => {
   )
 
   it('drops a shell profile it does not recognise', () => {
-    expect(normalizeSettings({ defaultShellProfileId: 'fish' }).defaultShellProfileId).toBeNull()
+    expect(normalizeSettings({ defaultShellProfileId: 'nushell' }).defaultShellProfileId).toBeNull()
   })
 
   it('keeps a recognised shell profile', () => {

@@ -6,7 +6,8 @@ import { TerminalManager } from './application/TerminalManager'
 import { TerminalService, type TerminalServiceOptions } from './application/TerminalService'
 import { NodePtyAdapter } from './infrastructure/NodePtyAdapter'
 import { createShellRegistry, pickDefaultShellProfileId } from './infrastructure/shellProfiles'
-import { detectInstalledShellProfiles } from './infrastructure/WindowsShellDetector'
+import { detectInstalledLinuxShellProfiles } from './infrastructure/LinuxShellDetector'
+import { detectInstalledShellProfiles as detectInstalledWindowsShellProfiles } from './infrastructure/WindowsShellDetector'
 import type { ShellRegistry } from './domain/ShellProfile'
 
 export interface CreateTerminalServiceOptions extends TerminalServiceOptions {
@@ -26,7 +27,10 @@ export const createTerminalService = (
 export { TerminalService }
 
 export { createShellRegistry, pickDefaultShellProfileId }
-export { detectInstalledShellProfiles }
+export const detectInstalledShellProfiles =
+  process.platform === 'linux'
+    ? detectInstalledLinuxShellProfiles
+    : detectInstalledWindowsShellProfiles
 
 export { registerTerminalIpc, type TerminalIpcDependencies } from './ipc/terminalIpc'
 

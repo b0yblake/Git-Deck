@@ -8,7 +8,7 @@ import type { IpcHandlerRegistry } from './ipcPorts'
 
 type Handler = (payload: unknown) => unknown
 
-const DIR = 'C:\\work\\api'
+const DIR = process.platform === 'win32' ? 'C:\\work\\api' : '/work/api'
 
 let handlers: Map<string, Handler>
 let openPath: ReturnType<typeof createOpenPathService>

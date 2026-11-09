@@ -5,11 +5,16 @@
 // none of them.
 import type { Logger } from '@main/bootstrap/logger'
 import { PortService } from './application/PortService'
+import { createLinuxPortAdapter } from './infrastructure/LinuxPortAdapter'
 import { createWindowsPortAdapter } from './infrastructure/WindowsPortAdapter'
 
 /** Wires the feature so the composition root never sees PowerShell. */
 export const createPortService = (logger: Logger, ownPid: number): PortService =>
-  new PortService(createWindowsPortAdapter(), logger, { ownPid })
+  new PortService(
+    process.platform === 'linux' ? createLinuxPortAdapter({ ownPid }) : createWindowsPortAdapter(),
+    logger,
+    { ownPid }
+  )
 
 export { PortService }
 export { registerPortsIpc, type PortsIpcDependencies } from './ipc/portsIpc'
