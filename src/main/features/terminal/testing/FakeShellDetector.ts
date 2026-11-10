@@ -6,7 +6,10 @@ const LABELS: Record<ShellProfileId, string> = {
   powershell: 'Windows PowerShell',
   pwsh: 'PowerShell 7',
   cmd: 'Command Prompt',
-  wsl: 'WSL'
+  wsl: 'WSL',
+  bash: 'Bash',
+  zsh: 'Zsh',
+  fish: 'Fish'
 }
 
 export const fakeShellProfile = (id: ShellProfileId): ShellProfile => ({

@@ -30,7 +30,7 @@ export const INSPECT_TIMEOUT_MS = 15_000
 export const KILL_TIMEOUT_MS = 10_000
 /** A full process table is tens of KB; a megabyte of headroom is generous. */
 export const MAX_INSPECTION_OUTPUT_BYTES = 8 * 1024 * 1024
-const MAX_KILL_OUTPUT_BYTES = 64 * 1024
+export const MAX_KILL_OUTPUT_BYTES = 64 * 1024
 
 const system32 = join(process.env['SystemRoot'] ?? 'C:\\Windows', 'System32')
 const POWERSHELL = join(system32, 'WindowsPowerShell', 'v1.0', 'powershell.exe')

@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { createFakeLogger, type FakeLogger } from '@main/testing/FakeLogger'
 import { createOpenPathService, type OpenPathService } from './openPath'
 
-const DIR = 'C:\\work\\api'
+const DIR = process.platform === 'win32' ? 'C:\\work\\api' : '/work/api'
 
 const service = (
   directories: readonly string[] = [DIR]
@@ -73,7 +73,7 @@ describe('the queue', () => {
   })
 
   it('a later accept overwrites an unclaimed path', () => {
-    const other = 'C:\\work\\web'
+    const other = process.platform === 'win32' ? 'C:\\work\\web' : '/work/web'
     const { openPath } = service([DIR, other])
     openPath.accept(['GitDeck.exe', '--open-path', DIR])
 

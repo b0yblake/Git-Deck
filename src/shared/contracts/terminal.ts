@@ -10,7 +10,16 @@
  * `Error` instances.
  */
 
-export const SHELL_PROFILE_IDS = ['git-bash', 'powershell', 'pwsh', 'cmd', 'wsl'] as const
+export const SHELL_PROFILE_IDS = [
+  'git-bash',
+  'powershell',
+  'pwsh',
+  'cmd',
+  'wsl',
+  'bash',
+  'zsh',
+  'fish'
+] as const
 
 export type ShellProfileId = (typeof SHELL_PROFILE_IDS)[number]
 

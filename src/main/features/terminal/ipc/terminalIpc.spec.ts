@@ -147,7 +147,7 @@ describe('input validation', () => {
   })
 
   it('create with an unknown shell profile is rejected', () => {
-    expectRejected(create({ cwd: 'D:\\work', shellProfileId: 'fish' }))
+    expectRejected(create({ cwd: 'D:\\work', shellProfileId: 'nushell' }))
   })
 
   it.each([null, undefined, 'a string', 42, []])(

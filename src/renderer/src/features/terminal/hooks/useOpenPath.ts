@@ -4,9 +4,12 @@ import { useTerminalStore } from '../store/terminalStore'
 /**
  * Windows paths compare loosely: Explorer hands over whatever casing and
  * separators it has, while a restored definition holds whatever was saved.
+ * POSIX paths are case-sensitive, so `/work/API` and `/work/api` stay distinct.
  */
 const normalizePath = (path: string): string =>
-  path.replace(/\//g, '\\').replace(/\\+$/, '').toLowerCase()
+  path.startsWith('/')
+    ? path.replace(/\/+$/, '')
+    : path.replace(/\//g, '\\').replace(/\\+$/, '').toLowerCase()
 
 const folderName = (path: string): string =>
   path.split(/[\\/]/).filter(Boolean).pop() ?? path

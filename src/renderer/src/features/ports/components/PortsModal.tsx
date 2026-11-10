@@ -4,9 +4,9 @@ import type { PortsFeedbackRow, PortsPhase } from '../store/portsStore'
 
 /** Why a row cannot be selected, in words a user can act on. */
 export const BLOCKED_REASON_LABELS: Record<PortTerminationBlockReason, string> = {
-  'system-process': 'Windows system process',
+  'system-process': 'System process',
   'gitdeck-process': 'This is GitDeck itself',
-  'different-session': 'Owned by another Windows session',
+  'different-session': 'Owned by another user or session',
   'identity-unavailable': 'Process identity could not be read'
 }
 

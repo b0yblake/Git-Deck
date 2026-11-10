@@ -92,7 +92,7 @@ describe('parseWorkspace — a record that cannot', () => {
   })
 
   it('rejects an unknown shell profile rather than passing it through', () => {
-    rejects(stored({ terminals: [definition('term_a', { shellProfileId: 'fish' })] }))
+    rejects(stored({ terminals: [definition('term_a', { shellProfileId: 'nushell' })] }))
   })
 
   it('rejects an id that is not a workspace id', () => {

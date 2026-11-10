@@ -9,6 +9,7 @@ import type { IpcHandlerRegistry } from './ipcPorts'
 type Handler = (payload: unknown) => unknown
 
 const CURRENT = 'C:\\Users\\dev\\AppData\\Roaming\\GitDeck'
+const PICKED = process.platform === 'win32' ? 'D:\\GitDeckData' : '/mnt/GitDeckData'
 
 let handlers: Map<string, Handler>
 let pickResult: string | null
@@ -75,15 +76,15 @@ describe('info', () => {
 
 describe('choose', () => {
   it('opens the picker seeded with the current folder and reports the switch', async () => {
-    pickResult = 'D:\\GitDeckData'
+    pickResult = PICKED
 
     const result = await invoke<DataFolderInfo | null>(IPC.storage.choose)
 
     expect(picks).toEqual([CURRENT])
-    expect(applied).toEqual(['D:\\GitDeckData'])
+    expect(applied).toEqual([PICKED])
     expect(result.ok).toBe(true)
     if (!result.ok) return
-    expect(result.value?.pending).toBe('D:\\GitDeckData')
+    expect(result.value?.pending).toBe(PICKED)
     expect(result.value?.current).toBe(CURRENT)
   })
 
@@ -97,7 +98,7 @@ describe('choose', () => {
   })
 
   it('re-choosing the folder in use cancels a pending switch', async () => {
-    pickResult = 'D:\\GitDeckData'
+    pickResult = PICKED
     await invoke(IPC.storage.choose)
 
     pickResult = CURRENT
@@ -109,16 +110,16 @@ describe('choose', () => {
   })
 
   it('the next picker opens at the pending folder, not the stale current one', async () => {
-    pickResult = 'D:\\GitDeckData'
+    pickResult = PICKED
     await invoke(IPC.storage.choose)
 
     await invoke(IPC.storage.choose)
 
-    expect(picks[1]).toBe('D:\\GitDeckData')
+    expect(picks[1]).toBe(PICKED)
   })
 
   it('a failed switch surfaces as an error and records no pending state', async () => {
-    pickResult = 'D:\\GitDeckData'
+    pickResult = PICKED
     applyError = new Error('disk full')
 
     const result = await invoke<DataFolderInfo | null>(IPC.storage.choose)

@@ -157,7 +157,7 @@ describe('the process table', () => {
     await openModal()
 
     expect(checkbox(SYSTEM).disabled).toBe(true)
-    expect(screen.getByText('Windows system process')).toBeTruthy()
+    expect(screen.getByText('System process')).toBeTruthy()
   })
 
   it('filters by port, PID and name', () => {
